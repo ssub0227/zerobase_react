@@ -1,10 +1,13 @@
 import React from 'react';
+import TodoHeader from './Header/TodoHeader'
+import TodoInput from './Input/TodoInput'
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      프로젝트 생성 완료
+    <div className={'App'}>
+      <TodoHeader />
+      <TodoInput />
     </div>
   );
 }

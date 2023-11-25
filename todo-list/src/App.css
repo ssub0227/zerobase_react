@@ -1,3 +1,17 @@
+body{
+  background-color: rgb(207, 232, 255);
+}
+
+#root{
+  display: flex;
+  justify-content: center;
+}
+
 .App {
-  text-align: center;
+  background-color: #fff;
+  min-width: 500px;
+  padding: 32px;
+  margin-top: 32px;
+  border-radius: 16px;
+  box-shadow: rgb(0,0,0 /10%) 0 0 10px;
 }
