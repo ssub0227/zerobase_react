@@ -1,9 +1,10 @@
-import React from 'react';
+import React from 'react'
 import TodoHeader from './Header/TodoHeader'
 import TodoInput from './Input/TodoInput'
 import TodoListTools from './Tools/TodoListTools'
 import Divider from './Divider/Divider'
-import './App.css';
+import TodoList from './List/TodoList'
+import './App.css'
 
 function App() {
   return (
@@ -12,8 +13,9 @@ function App() {
       <TodoInput />
       <TodoListTools />
       <Divider />
+      <TodoList />
     </div>
-  );
+  )
 }
 
 export default App;
