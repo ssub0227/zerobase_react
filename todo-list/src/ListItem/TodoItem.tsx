@@ -4,13 +4,13 @@ import styles from './TodoItem.module.css'
 
 interface TodoItemProps{
   text: string
+  isChecked:boolean
 }
 
 const TodoItem = (props:TodoItemProps)=>{
-  const isChecked = true
   return(
    <li className={styles.container}>
-    <IoCheckmarkCircleOutline className={[styles.circleIcon, `${isChecked? styles.checkedCircleIcon : styles.unCheckedCircleIcon}`].join(' ')} />
+    <IoCheckmarkCircleOutline className={[styles.circleIcon, `${props.isChecked? styles.checkedCircleIcon : styles.unCheckedCircleIcon}`].join(' ')} />
     <span>{props.text}</span>
     <IoIosRemoveCircleOutline className={styles.removeIcon} />
    </li>
