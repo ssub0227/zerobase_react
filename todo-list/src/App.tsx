@@ -73,8 +73,7 @@ const App = () => {
   }
 
   const handleAllRemoveClick = () =>{
-    // todos.clear()
-    // return setTodos()
+    setTodos([])
   }
   
   return (
