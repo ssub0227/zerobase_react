@@ -46,7 +46,11 @@ const App = () => {
   }
 
   const handleRemove = (id:number) =>{
-    
+    const newTodos = todos.filter(todo => {
+      return todo.id != id // 삭제를 클릭한 아이디가 받아온 아이디와 같을 경우 -> 삭제를 누르지 않은 todo 만 리턴
+    })
+
+    setTodos(newTodos)
   }
 
   return (
