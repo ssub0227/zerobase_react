@@ -53,12 +53,34 @@ const App = () => {
     setTodos(newTodos)
   }
 
+  const isTodoAllChecked = () =>{
+    return todos.every(todo => todo.isChecked)
+    //every : 배열안의 모든 요소가 적합한가 true/false 
+  }
+
+  const handleAllToggleClick = () =>{
+    const isAllChecked = isTodoAllChecked()
+    const newTodos = todos.map(todo => {
+      return{
+        ...todo,
+        isChecked: !isAllChecked
+      }
+    })
+
+    setTodos(newTodos)
+  }
+
+  const handleAllRemoveClick = () =>{
+    // todos.clear()
+    // return setTodos()
+  }
+  
   return (
     <div className={'App'}>
       <TodoHeader count={todos.filter(todo => !todo.isChecked).length}/>
       <TodoInput text={text} onSubmit={handleSubmit} onTextChange={handleTextChange} />
       <TodoListArea todoCount={todos.length} >
-        <TodoListTools />
+        <TodoListTools isAllChecked={isTodoAllChecked()} onToggleAllClick={handleAllToggleClick} onRemoveAllClcck={handleAllRemoveClick}/>
         <Divider />
         <TodoList todos={todos} onRemoveClick={handleRemove} onToggleClick={handleToggle}/>
       </TodoListArea>
