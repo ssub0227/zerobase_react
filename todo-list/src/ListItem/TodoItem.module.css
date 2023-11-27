@@ -26,6 +26,11 @@
   color: #32cd32;
 }
 
+.checkedCircleIcon + span{
+  text-decoration: line-through;
+  color: #c0c0c0;
+}
+
 .unCheckedCircleIcon{
   color: #c0c0c0;
 }

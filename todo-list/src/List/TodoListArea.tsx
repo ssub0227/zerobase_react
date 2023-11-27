@@ -8,9 +8,9 @@ interface TodoListProps{
 // High Order Component (HOC)
 
 const TodoListArea = (props:TodoListProps) =>{
-if(props.todoCount < 1){
-  return null
-}
+  if(props.todoCount < 1){
+    return null
+  }
 
   return(
   <>

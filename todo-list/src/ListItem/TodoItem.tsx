@@ -3,16 +3,31 @@ import { IoIosRemoveCircleOutline   } from "react-icons/io"
 import styles from './TodoItem.module.css'
 
 interface TodoItemProps{
+  id:number
   text: string
   isChecked:boolean
+  onToggleClick: (id:number) => void
+  onRemoveClick: (id:number) => void
 }
 
 const TodoItem = (props:TodoItemProps)=>{
+  const handleToggle = () =>{
+    props.onToggleClick(props.id)
+  }
+
+  const handleRemove = () =>{
+    props.onRemoveClick(props.id)
+  }
+
   return(
    <li className={styles.container}>
-    <IoCheckmarkCircleOutline className={[styles.circleIcon, `${props.isChecked? styles.checkedCircleIcon : styles.unCheckedCircleIcon}`].join(' ')} />
+    <IoCheckmarkCircleOutline 
+    onClick={handleToggle}
+    className={[styles.circleIcon, `${props.isChecked? styles.checkedCircleIcon : styles.unCheckedCircleIcon}`].join(' ')} />
     <span>{props.text}</span>
-    <IoIosRemoveCircleOutline className={styles.removeIcon} />
+    <IoIosRemoveCircleOutline 
+      onClick={handleRemove}
+    className={styles.removeIcon} />
    </li>
   )
 }
