@@ -21,6 +21,8 @@ const App = () => {
   }
 
   const handleSubmit = () => {
+    if(!text) return
+
     const newTodos = todos.concat({ // concat : 배열에 마지막에 새로운 값을 추가하여 새로운 배열 리턴
       id: Date.now(),
       text:text,
