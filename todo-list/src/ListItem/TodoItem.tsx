@@ -1,22 +1,33 @@
 import { IoCheckmarkCircleOutline   } from "react-icons/io5"
 import { IoIosRemoveCircleOutline   } from "react-icons/io"
 import styles from './TodoItem.module.css'
+import { useTodoDispatch } from "../Todo/TodoProvider"
 
 interface TodoItemProps{
   id:number
   text: string
   isChecked:boolean
-  onToggleClick: (id:number) => void
-  onRemoveClick: (id:number) => void
 }
 
 const TodoItem = (props:TodoItemProps)=>{
+  const todoDispatch = useTodoDispatch()
+
   const handleToggle = () =>{
-    props.onToggleClick(props.id)
+    todoDispatch({
+      type:'checked',
+      payload: {
+        id: props.id
+      }
+    })
   }
 
   const handleRemove = () =>{
-    props.onRemoveClick(props.id)
+    todoDispatch({
+      type:'remove',
+      payload: {
+        id: props.id
+      }
+    })
   }
 
   return(

@@ -4,12 +4,12 @@ export type TodoType = {
   isChecked: boolean
 }
 
-type TodoReducerStateType = {
+export type TodoStateType = {
   todos: TodoType[]
 }
 
 // add, remove, checked, allChecked, allRemove
-type TodoReducerActionType = {
+export type TodoActionType = {
   type: 'add'
   payload: {
     text: string
@@ -31,7 +31,7 @@ type TodoReducerActionType = {
   type: 'allRemove'
 }
 
-export const TodoReducer = (state: TodoReducerStateType, action: TodoReducerActionType) =>{
+export const TodoReducer = (state: TodoStateType, action: TodoActionType) =>{
   switch(action.type){
     case 'add':
       return {

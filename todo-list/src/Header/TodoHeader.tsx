@@ -1,14 +1,14 @@
 import styles from  './TodoHeader.module.css'
+import { useTodoState } from '../Todo/TodoProvider'
 
-interface TodoHeaderProps{
-  count:number
-}
+const TodoHeader = () =>{
+  const todoState = useTodoState()
 
-const TodoHeader = (props:TodoHeaderProps) =>{
+  const count = todoState.todos.filter(todo => !todo.isChecked).length
   return (
     <header>
       <h1 className={styles.headerTitle}>
-        <mark className={styles.todoCount}>{props.count}</mark>개의 할 일
+        <mark className={styles.todoCount}>{count}</mark>개의 할 일
       </h1>
     </header>
   )
