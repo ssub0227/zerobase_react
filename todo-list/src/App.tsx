@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useReducer } from 'react'
 import TodoHeader from './Header/TodoHeader'
 import TodoInput from './Input/TodoInput'
 import TodoListTools from './Tools/TodoListTools'
 import Divider from './Divider/Divider'
 import TodoList from './List/TodoList'
 import TodoListArea from './List/TodoListArea'
+import { todoInputReducer } from './Todo/TodoInputReducer'
 import './App.css'
 
 export type TodoType = {
@@ -14,22 +15,28 @@ export type TodoType = {
 }
 
 const App = () => {
-  const [text, setText] = useState('')
+  // const [text, setText] = useState('')
+  const [inputState, inputDispatch] = useReducer(todoInputReducer, {text: ''})
   const [todos, setTodos] = useState<TodoType[]>([])
   const handleTextChange = (text:string) =>{
-    setText(text)
+    inputDispatch({
+      type:'change',
+      payroad: text
+    })
   }
 
   const handleSubmit = () => {
-    if(!text) return
+    if(!inputState.text) return
 
     const newTodos = todos.concat({ // concat : 배열에 마지막에 새로운 값을 추가하여 새로운 배열 리턴
       id: Date.now(),
-      text:text,
+      text:inputState.text,
       isChecked:false
     })
     setTodos(newTodos)
-    setText('') // 인풋 영역 빈값으로 
+    inputDispatch({
+      type:'clear'
+    })
   }
 
   const handleToggle = (id:number) =>{
@@ -79,7 +86,7 @@ const App = () => {
   return (
     <div className={'App'}>
       <TodoHeader count={todos.filter(todo => !todo.isChecked).length}/>
-      <TodoInput text={text} onSubmit={handleSubmit} onTextChange={handleTextChange} />
+      <TodoInput text={inputState.text} onSubmit={handleSubmit} onTextChange={handleTextChange} />
       <TodoListArea todoCount={todos.length} >
         <TodoListTools isAllChecked={isTodoAllChecked()} onToggleAllClick={handleAllToggleClick} onRemoveAllClcck={handleAllRemoveClick}/>
         <Divider />
