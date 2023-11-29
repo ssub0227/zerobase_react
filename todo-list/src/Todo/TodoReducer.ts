@@ -50,7 +50,7 @@ export const TodoReducer = (state: TodoStateType, action: TodoActionType) =>{
     }
     case 'remove':{
       const newTodos =  state.todos.filter(todo => {
-        return todo.id != action.payload.id // 삭제를 클릭한 아이디가 받아온 아이디와 같을 경우 -> 삭제를 누르지 않은 todo 만 리턴
+        return todo.id !== action.payload.id // 삭제를 클릭한 아이디가 받아온 아이디와 같을 경우 -> 삭제를 누르지 않은 todo 만 리턴
       })
 
       saveTodos(newTodos)
