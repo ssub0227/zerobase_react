@@ -1,8 +1,12 @@
 import PageHeader from './Common/PageHeader'
+import PokeCardsList from './List/PokeCardsList'
 
 function App() {
   return (
-    <PageHeader/ >
+    <>
+      <PageHeader />
+      <PokeCardsList />
+    </>
   );
 }
 
