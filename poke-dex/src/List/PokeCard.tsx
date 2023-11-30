@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import PokeNameChip from '../Common/PokeNameChip'
+import PokeMarkChip from '../Common/PokeMarkChip'
 
 const PokeCard = () =>{
   const imgScr = `https://m.media-amazon.com/images/I/5124J8JXn-L._AC_UF894,1000_QL80_.jpg`
@@ -12,7 +13,7 @@ const PokeCard = () =>{
         <Image src={imgScr} alt={'psyduck'}/>
       </Body>
       <Footer>
-
+        <PokeMarkChip/>
       </Footer>
     </Item>
   )
@@ -21,6 +22,7 @@ const PokeCard = () =>{
 const Item = styled.li`
   display: flex;
   flex-direction:column;
+  justify-content:space-evenly;
   padding:8px;
   width:250px;
   height:300px;
@@ -35,17 +37,14 @@ const Body = styled.section`
   display:flex;
   align-items:center;
   justify-content:center;
-  margin:8px 0;
 `
 const Image = styled.img`
   width:50%;
-  margin:8px 0;
 `
 
 const Footer =styled.section`
   display:flex;
   margin-left:auto;
-  flex-direction: row;
 `
 
 export default PokeCard
