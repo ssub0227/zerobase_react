@@ -1,6 +1,8 @@
+import PageHeader from './Common/PageHeader'
+
 function App() {
   return (
-    <>hi</>
+    <PageHeader/ >
   );
 }
 
