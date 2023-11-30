@@ -18,6 +18,7 @@ const Chip = styled.div`
   font-weight:bold;
   font-size:14px;
   box-shadow:0.5px 0.5px 0 0 #c0c0c0;
+  margin-left:auto;
 `
 
 const Text = styled.label`
