@@ -30,13 +30,13 @@ interface pokemonDetailResponseType{
     }
   }[],
   sprites:{
-    front_defalut: string,
+    front_default: string,
     other:{
       dream_world:{
-        front_defalut:string
-      }
+        front_default:string
+      },
       'official-artwork':{
-        front_defalut:string
+        front_default:string
       }
     }
   },
@@ -55,9 +55,9 @@ export interface pokemonDetailType{
   name:string,
   types: string[],
   images:{
-    frontDefalut: string,
+    frontDefault: string,
     dreamWorldFront: string,
-    artworkFront: string
+    officialArtworkFront: string
   },
   baseStats:{
     name:string,
@@ -79,9 +79,9 @@ export const fetchPokemonsDetail = async (name:string):Promise<pokemonDetailType
     weight:detail.weight / 10, //kg 단위
     types:detail.types.map(item=>item.type.name),
     images:{
-      frontDefalut: detail.sprites.front_defalut,
-      dreamWorldFront: detail.sprites.other.dream_world.front_defalut,
-      artworkFront: detail.sprites.other['official-artwork'].front_defalut
+      frontDefault: detail.sprites.front_default,
+      dreamWorldFront: detail.sprites.other.dream_world.front_default,
+      officialArtworkFront: detail.sprites.other['official-artwork'].front_default
     },
     baseStats: detail.stats.map(item => {
       return {

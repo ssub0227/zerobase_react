@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { useNavigate, useSearchParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import PokeNameChip from '../Common/PokeNameChip'
 import PokeMarkChip from '../Common/PokeMarkChip'
 import { fetchPokemonsDetail, pokemonDetailType } from '../Service/pokemonService'
@@ -11,7 +11,6 @@ interface PokeCardPropsType{
 
 const PokeCard = (props: PokeCardPropsType) =>{
   const [pokemon, setPokemon] = useState<pokemonDetailType|null>(null)
-  const imgScr = `https://m.media-amazon.com/images/I/5124J8JXn-L._AC_UF894,1000_QL80_.jpg`
   const navigate = useNavigate();
 
   const handleClick = () =>{
@@ -35,10 +34,10 @@ const PokeCard = (props: PokeCardPropsType) =>{
         <PokeNameChip name={pokemon.name} id={pokemon.id}/>
       </Header>
       <Body>
-        <Image src={imgScr} alt={'psyduck'}/>
+        <Image src={pokemon.images.dreamWorldFront} alt={pokemon.name}/>
       </Body>
       <Footer>
-        <PokeMarkChip/>
+        <PokeMarkChip/> 
       </Footer>
     </Item>
   )
