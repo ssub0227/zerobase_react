@@ -1,21 +1,38 @@
 import styled from '@emotion/styled'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import PokeNameChip from '../Common/PokeNameChip'
 import PokeMarkChip from '../Common/PokeMarkChip'
+import { fetchPokemonsDetail, pokemonDetailType } from '../Service/pokemonService'
+import { useEffect, useState } from 'react'
 
-const PokeCard = () =>{
+interface PokeCardPropsType{
+  name: string
+}
+
+const PokeCard = (props: PokeCardPropsType) =>{
+  const [pokemon, setPokemon] = useState<pokemonDetailType|null>(null)
   const imgScr = `https://m.media-amazon.com/images/I/5124J8JXn-L._AC_UF894,1000_QL80_.jpg`
-
   const navigate = useNavigate();
 
   const handleClick = () =>{
-    navigate(`/pokemon/고라파덕`)
+    navigate(`/pokemon/${props.name}`)
+  }
+
+  useEffect(()=>{
+    (async()=>{
+        const detail = await fetchPokemonsDetail(props.name)
+        setPokemon(detail)
+      })()
+  },[props.name])
+
+  if(!pokemon){
+    return null //포켓몬이 null 일때
   }
 
   return(
     <Item onClick={handleClick}>
       <Header>
-        <PokeNameChip/>
+        <PokeNameChip name={pokemon.name} id={pokemon.id}/>
       </Header>
       <Body>
         <Image src={imgScr} alt={'psyduck'}/>
