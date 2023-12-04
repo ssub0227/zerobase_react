@@ -29,9 +29,9 @@ const PokeCard = (props: PokeCardPropsType) =>{
   }
 
   return(
-    <Item onClick={handleClick}>
+    <Item onClick={handleClick} color={pokemon.color}>
       <Header>
-        <PokeNameChip name={pokemon.name} id={pokemon.id}/>
+        <PokeNameChip name={pokemon.koreanName} id={pokemon.id} color={pokemon.color}/>
       </Header>
       <Body>
         <Image src={pokemon.images.dreamWorldFront} alt={pokemon.name}/>
@@ -43,7 +43,7 @@ const PokeCard = (props: PokeCardPropsType) =>{
   )
 }
 
-const Item = styled.li`
+const Item = styled.li<{ color :string }>`
   display: flex;
   flex-direction:column;
   justify-content:space-evenly;
@@ -60,7 +60,7 @@ const Item = styled.li`
   }
 
   &:active{
-    background-color:#c0c0c0;
+    background-color: ${props => props.color};
   }
 `
 
