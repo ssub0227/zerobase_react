@@ -2,8 +2,10 @@ import styled from '@emotion/styled'
 import { useNavigate } from 'react-router-dom'
 import PokeNameChip from '../Common/PokeNameChip'
 import PokeMarkChip from '../Common/PokeMarkChip'
+import { PokeImageSkeleton } from '../Common/PokeImageSkeleton'
 import { fetchPokemonsDetail, pokemonDetailType } from '../Service/pokemonService'
 import { useEffect, useState } from 'react'
+
 
 interface PokeCardPropsType{
   name: string
@@ -24,8 +26,20 @@ const PokeCard = (props: PokeCardPropsType) =>{
       })()
   },[props.name])
 
-  if(!pokemon){
-    return null //포켓몬이 null 일때
+  if(!pokemon){ // pokemon 값이 null 일때 ( 로딩 )
+    return (
+      <Item color={'gold'}>
+        <Header>
+          <PokeNameChip name={'포켓몬'} id={0} color={'gold'}/>
+        </Header>
+        <Body>
+          <PokeImageSkeleton/>
+        </Body>
+        <Footer>
+          <PokeMarkChip/> 
+        </Footer>
+      </Item>
+    )
   }
 
   return(

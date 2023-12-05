@@ -1,8 +1,9 @@
 import styled from '@emotion/styled'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { fetchPokemonsDetail, pokemonDetailType } from '../Service/pokemonService'
 import { useEffect, useState } from 'react'
 import PokeMarkChip from '../Common/PokeMarkChip'
+import { PokeImageSkeleton } from '../Common/PokeImageSkeleton'
 
 
 
@@ -19,7 +20,17 @@ const PokemonDetail = () =>{
   },[name])
 
   if (!name || !pokemon) {
-    return null // name 이 없을 때
+    return(
+      <Container>
+        <ImageContainer>
+          <PokeImageSkeleton/>
+        </ImageContainer>
+        <Divider />      
+        <Footer>
+          <PokeMarkChip />
+        </Footer>
+      </Container>
+    )
   }
 
   return(
@@ -91,6 +102,7 @@ const ImageContainer = styled.section`
   align-item:center;
   justify-content:center;
   margin:8px 0;
+  min-height:350px;
 `
 const Image = styled.img`
   width:30%;
