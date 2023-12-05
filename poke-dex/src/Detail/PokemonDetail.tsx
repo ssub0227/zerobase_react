@@ -4,10 +4,12 @@ import { fetchPokemonsDetail, pokemonDetailType } from '../Service/pokemonServic
 import { useEffect, useState } from 'react'
 import PokeMarkChip from '../Common/PokeMarkChip'
 import { PokeImageSkeleton } from '../Common/PokeImageSkeleton'
-
+import { useSelector } from 'react-redux'
+import { RootState } from '../Store'
 
 
 const PokemonDetail = () =>{
+  const imageType = useSelector((state: RootState) => state.imageType.type)
   const { name } = useParams() // props 로 받아오는 것이 아닌 url 파라미터로 체크
   const [pokemon, setPokemon] = useState<pokemonDetailType|null>(null)
 
@@ -36,7 +38,7 @@ const PokemonDetail = () =>{
   return(
     <Container>
       <ImageContainer>
-        <Image src={pokemon.images.dreamWorldFront} alt={pokemon.name}/>
+        <Image src={pokemon.images[imageType]} alt={pokemon.name}/>
       </ImageContainer>
       <Divider />      
       <Body>

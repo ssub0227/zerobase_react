@@ -6,6 +6,8 @@ import { useIntersectionObserver } from 'react-intersection-observer-hook'
 import { PokeImageSkeleton } from '../Common/PokeImageSkeleton'
 import { fetchPokemonsDetail, pokemonDetailType } from '../Service/pokemonService'
 import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
+import { RootState } from '../Store'
 
 
 interface PokeCardPropsType{
@@ -13,6 +15,7 @@ interface PokeCardPropsType{
 }
 
 const PokeCard = (props: PokeCardPropsType) =>{
+  const imageType = useSelector((state: RootState) => state.imageType.type)
   const [pokemon, setPokemon] = useState<pokemonDetailType|null>(null)
   const navigate = useNavigate();
   const [ref, { entry }] = useIntersectionObserver();
@@ -53,7 +56,7 @@ const PokeCard = (props: PokeCardPropsType) =>{
         <PokeNameChip name={pokemon.koreanName} id={pokemon.id} color={pokemon.color}/>
       </Header>
       <Body>
-        <Image src={pokemon.images.dreamWorldFront} alt={pokemon.name}/>
+        <Image src={pokemon.images[imageType]} alt={pokemon.name}/>
       </Body>
       <Footer>
         <PokeMarkChip/> 
