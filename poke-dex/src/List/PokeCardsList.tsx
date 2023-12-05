@@ -44,7 +44,7 @@ const PokeCardsList = () => {
           })
         }
       </List>
-      <div ref={infiniteSCroll}>Loading...</div>
+      <Loading ref={infiniteSCroll}>Loading...</Loading>
    </>
   )
 }
